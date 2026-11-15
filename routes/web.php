@@ -21,3 +21,11 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+// PrivacyLib uses the existing web session and Laravel CSRF middleware.
+Route::middleware('auth')->prefix('gdpr')->name('gdpr.')->group(function () {
+    Route::get('/', [\App\Http\Controllers\GdprController::class, 'page'])->name('index');
+    Route::get('/csrf', [\App\Http\Controllers\GdprController::class, 'csrf'])->name('csrf');
+    Route::patch('/consent', [\App\Http\Controllers\GdprController::class, 'consent'])->name('consent');
+    Route::post('/{policy}', [\App\Http\Controllers\GdprController::class, 'evaluate'])->name('evaluate');
+});

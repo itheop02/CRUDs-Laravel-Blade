@@ -21,6 +21,9 @@
                 </div>
             </div>
 
+            <div class="flex items-center">
+                <a href="{{ route('gdpr.index') }}" data-gdpr-entry="header" class="px-3 py-2 text-sm font-semibold text-indigo-700 underline">Privacy checks</a>
+            </div>
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
